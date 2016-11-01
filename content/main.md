@@ -1,6 +1,6 @@
 ## Slide 1
 
-content...
+contenu...
 
 ~~
 
@@ -10,7 +10,7 @@ notes...
 
 ## Slide 2
 
-content...
+contenu...
 
 ~~
 
