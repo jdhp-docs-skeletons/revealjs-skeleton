@@ -38,7 +38,7 @@ jdhp:
 	cp -v main.html $(HTML_TMP_DIR)/
 	cp -vr content $(HTML_TMP_DIR)/
 	cp -vr figs $(HTML_TMP_DIR)/
-	cp -vr reveal.js $(HTML_TMP_DIR)/
+	rm -rf $(HTML_TMP_DIR)/figs/logos
 	
 	# Upload the HTML files
 	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
