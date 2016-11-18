@@ -8,7 +8,7 @@ TODO_AUTHOR_WEB_SITE="www.jdhp.org"
 
 TODO_COPYRIGHT_NOTICE="Copyright (c) 2016 ${TODO_AUTHOR_NAME} (${TODO_AUTHOR_WEB_SITE})"
 
-TODO_DOCUMENT_DATE="September 1, 2016"          # TODO
+TODO_DOCUMENT_DATE="1er septembre 2016"         # TODO
 TODO_INSTITUTE="CEA Saclay - Irfu/SAp"          # TODO
 TODO_DOCUMENT_SUBJECT="TODO"                    # TODO
 TODO_DOCUMENT_KEYWORDS="TODO,TODO"              # TODO
