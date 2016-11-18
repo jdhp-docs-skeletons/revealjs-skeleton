@@ -62,7 +62,7 @@ sed -i "" \
     -e "s TODO_DOCUMENT_GITHUB_URL ${TODO_DOCUMENT_GITHUB_URL} g" \
     -e "s TODO_DOCUMENT_ISSUE_TRACKER_URL ${TODO_DOCUMENT_ISSUE_TRACKER_URL} g" \
     -e "s/TODO_HTML_TMP_DIR/${TODO_HTML_TMP_DIR}/g" \
-    AUTHORS meta.make README.rst content/title_page.md .gitignore
+    AUTHORS meta.make README.rst .gitignore main.html content/title_page.md
 
 
 # FIX TITLES UNDERLINE LENGTH IN RESTRUCTUREDTEXT FILES #######################

@@ -9,12 +9,35 @@
 
 <html>
     <head>
-        <meta charset="utf-8">
+        <title>TODO_DOCUMENT_TITLE</title>
 
-        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="description" content="TODO_DOCUMENT_SUBJECT">
+        <meta name="author" content="TODO_AUTHOR_NAME">
+        <meta name="copyright" content="TODO_COPYRIGHT_NOTICE" />
+
+        <!-- iOS-specific properties (see https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html) -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
         <link rel="stylesheet" href="reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+
+        <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme"> -->
+        <!-- <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme"> -->
+        <link rel="stylesheet" href="style/html/jd.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
     </head>
     <body>
         <div class="reveal">
@@ -48,27 +71,27 @@
         <script>
             Reveal.initialize({
 
-//                // Display controls in the bottom right corner
-//                controls: true,
-//
-//                // Display a presentation progress bar
-//                progress: true,
-//
-//                // Display the page number of the current slide
-//                slideNumber: false,
-//
-//                // Push each slide change to the browser history
-//                history: false,
-//
+                // Display controls in the bottom right corner
+                controls: true,
+
+                // Display a presentation progress bar
+                progress: true,
+
+                // Display the page number of the current slide
+                slideNumber: true,
+
+                // Push each slide change to the browser history
+                history: false,
+
 //                // Enable keyboard shortcuts for navigation
 //                keyboard: true,
 //
 //                // Enable the slide overview mode
 //                overview: true,
-//
-//                // Vertical centering of slides
-//                center: true,
-//
+
+                // Vertical centering of slides
+                center: false,
+
 //                // Enables touch navigation on devices with touch input
 //                touch: true,
 //
@@ -114,13 +137,13 @@
 //
 //                // Opens links in an iframe preview overlay
 //                previewLinks: false,
-//
-//                // Transition style
-//                transition: 'default', // none/fade/slide/convex/concave/zoom
-//
-//                // Transition speed
-//                transitionSpeed: 'default', // default/fast/slow
-//
+
+                // Transition style
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Transition speed
+                transitionSpeed: 'default', // default/fast/slow
+
 //                // Transition style for full page slide backgrounds
 //                backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
 //

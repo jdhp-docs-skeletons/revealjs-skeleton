@@ -2,20 +2,83 @@ include meta.make
 
 ###############################################################################
 
-all: $(FILE_BASE_NAME).pdf
+all: open
 
-.PHONY : all clean init slides notes handout jdhp publish
+.PHONY : all clean init open pdf jdhp publish
 
 SRCSLIDES=main.html\
 		  content/*.md\
 		  figs/*
 
-###############################################################################
+# OPEN IN WEB BROWSER #########################################################
 
-slides: $(FILE_BASE_NAME).pdf
+# TODO: follow the full setup procedure (with NodeJS) described there
+#       https://github.com/hakimel/reveal.js/#full-setup
+
+# Inspired by https://git.kernel.org/cgit/git/git.git/tree/config.mak.uname
+# See also http://stackoverflow.com/questions/3466166/
+
+# If uname not available then UNAME_S is set to 'unknown' 
+UNAME_S := $(shell sh -c 'uname -s 2>/dev/null || echo unknown')
+
+open:
+# Linux ###############################
+# See: http://askubuntu.com/questions/8252/
+ifeq ($(UNAME_S),Linux)
+	@xdg-open main.html
+endif
+
+# MacOSX ##############################
+ifeq ($(UNAME_S),Darwin)
+	@open -a firefox main.html
+	#open -a Google\ Chrome main.html
+endif
+
+# Windows #############################
+ifneq (,$(findstring CYGWIN,$(UNAME_S)))
+	@#start chrome  main.html
+	@start firefox  main.html
+endif
+ifneq (,$(findstring MINGW32,$(UNAME_S)))
+	@#start chrome  main.html
+	@start firefox  main.html
+endif
+ifneq (,$(findstring MSYS,$(UNAME_S)))
+	@#start chrome  main.html
+	@start firefox  main.html
+endif
+
+# MAKE PDF ####################################################################
+
+pdf: $(FILE_BASE_NAME).pdf
+
+# TODO: follow the full setup procedure (with NodeJS) described there
+#       https://github.com/hakimel/reveal.js/#full-setup
 
 $(FILE_BASE_NAME).pdf: $(SRCSLIDES)
-	@echo "Not available yet"           # TODO
+	@echo "Not fully available yet"           # TODO
+# Linux ###############################
+# See: http://askubuntu.com/questions/8252/
+ifeq ($(UNAME_S),Linux)
+	@xdg-open main.html?print-pdf
+endif
+
+# MacOSX ##############################
+ifeq ($(UNAME_S),Darwin)
+	@open -a Google\ Chrome main.html?print-pdf
+endif
+
+# Windows #############################
+ifneq (,$(findstring CYGWIN,$(UNAME_S)))
+	@start chrome  main.html?print-pdf
+endif
+ifneq (,$(findstring MINGW32,$(UNAME_S)))
+	@start chrome  main.html?print-pdf
+endif
+ifneq (,$(findstring MSYS,$(UNAME_S)))
+	@start chrome  main.html?print-pdf
+endif
+
 
 # PUBLISH #####################################################################
 
