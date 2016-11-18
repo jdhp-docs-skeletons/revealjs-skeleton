@@ -100,6 +100,7 @@ jdhp:
 	@mkdir $(HTML_TMP_DIR)/
 	cp -v main.html $(HTML_TMP_DIR)/
 	cp -vr content $(HTML_TMP_DIR)/
+	cp -vr style $(HTML_TMP_DIR)/
 	cp -vr figs $(HTML_TMP_DIR)/
 	rm -rf $(HTML_TMP_DIR)/figs/logos
 	
