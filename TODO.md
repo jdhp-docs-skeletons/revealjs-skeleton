@@ -2,6 +2,36 @@
 
 ## Skeleton
 
+- [x] Improve Mathjax support: fix the conflict between Markdown parser (the
+      "Marked" plugin) and Mathjax by desabling Markdown parser between
+      '$$...$$' like for code blocks '```...```' to avoid the use of
+      additionnal escape characters
+      - Marked: https://github.com/chjj/marked/issues?utf8=%E2%9C%93&q=mathjax
+          - https://github.com/chjj/marked/pull/799
+          - https://github.com/chjj/marked/issues/722
+          - https://github.com/chjj/marked/pull/723
+          - https://github.com/chjj/marked/pull/591
+          - https://github.com/chjj/marked/issues/546
+          - https://github.com/chjj/marked/issues/353
+          - https://github.com/chjj/marked/pull/180
+          - https://github.com/chjj/marked/issues/105
+      - Reveal.js: https://github.com/hakimel/reveal.js/issues?utf8=%E2%9C%93&q=mathjax
+      - SOLUTION:
+          - https://github.com/hakimel/reveal.js/issues/1359
+          - https://github.com/hakimel/reveal.js/issues/702
+          - https://github.com/hakimel/reveal.js/pull/1205
+- [ ] The LaTeX "Algorithmic" environment desn't seems to work with MathJax... Investigate on this.
+    - List of supported environments: http://docs.mathjax.org/en/latest/tex.html#environments
+    - In the meanwhile: http://www.lvcsr.com/typesetting-algorithms-in-restructuredtext.html
+    - Or imitate this with Markdown tables + inline LaTeX...
+- [ ] Try KaTeX instead Mathjax ?
+    - https://github.com/Khan/KaTeX
+    - Plus: much faster than Mathjax
+        - http://www.intmath.com/cg5/katex-mathjax-comparison.php
+    - Cons: (as of 2014) "KaTeX only supports a limited subset of the functionality provided by MathJax"
+        - http://meta.mathoverflow.net/questions/1908/katex-vs-mathjax
+        - KaTeX commands: https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX
+        - Mathjax commands: http://docs.mathjax.org/en/latest/tex.html#supported-latex-commands
 - [ ] Add a makefile in "figs/" to make/clean figures from scripts (Python,
       ...)
 - [ ] Improve the init_skeleton.sh script (add safety checks: are the variable
@@ -37,6 +67,50 @@
 - [ ] Make a clean bibliography (like bibtex) from .bib files ?
 - [ ] Is the HTML document compliant with mobile devices (see Google's
       advices) ?
+
+### MathsJax/Markdwon conflict
+
+#### NO
+
+$$
+\begin{array}{cc}
+  a & b \\
+  c & c
+\end{array}
+$$
+
+#### OK
+
+$$
+\\begin{array}{cc}
+  a & b \\\\
+  c & c
+\\end{array}
+$$
+
+#### OK
+
+<div>
+$$
+\begin{array}{cc}
+  a & b \\\\
+  c & c
+\end{array}
+$$
+</div>
+
+#### Solution
+
+- https://github.com/hakimel/reveal.js/issues/1359
+- https://github.com/hakimel/reveal.js/issues/702
+- https://github.com/hakimel/reveal.js/pull/1205
+
+`$$
+\begin{array}{cc}
+  a & b \\
+  c & c
+\end{array}
+$$`
 
 ## Document
 

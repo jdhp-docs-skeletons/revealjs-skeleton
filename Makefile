@@ -2,13 +2,20 @@ include meta.make
 
 ###############################################################################
 
+SUBDIRS = figs
+
+SRCSLIDES = main.html\
+            content/*.md\
+            figs/*
+
+.PHONY : all clean init open pdf jdhp publish $(SUBDIRS)
+
 all: open
 
-.PHONY : all clean init open pdf jdhp publish
+# SUBDIRS #####################################################################
 
-SRCSLIDES=main.html\
-		  content/*.md\
-		  figs/*
+$(SUBDIRS):
+	$(MAKE) --directory=$@
 
 # OPEN IN WEB BROWSER #########################################################
 
@@ -21,7 +28,7 @@ SRCSLIDES=main.html\
 # If uname not available then UNAME_S is set to 'unknown' 
 UNAME_S := $(shell sh -c 'uname -s 2>/dev/null || echo unknown')
 
-open:
+open: $(SUBDIRS)
 # Linux ###############################
 # See: http://askubuntu.com/questions/8252/
 ifeq ($(UNAME_S),Linux)
@@ -50,7 +57,7 @@ endif
 
 # MAKE PDF ####################################################################
 
-pdf: $(FILE_BASE_NAME).pdf
+pdf: $(FILE_BASE_NAME).pdf $(SUBDIRS)
 
 # TODO: follow the full setup procedure (with NodeJS) described there
 #       https://github.com/hakimel/reveal.js/#full-setup
@@ -85,7 +92,7 @@ endif
 publish: jdhp
 
 #jdhp:$(FILE_BASE_NAME).pdf
-jdhp:
+jdhp: $(SUBDIRS)
 	
 	########
 	# HTML #
@@ -124,6 +131,7 @@ jdhp:
 clean:
 	@echo "Remove generated files"
 	@rm -rf $(HTML_TMP_DIR)/
+	$(MAKE) clean --directory=figs
 
 init: clean
 	@echo "Remove target files"
