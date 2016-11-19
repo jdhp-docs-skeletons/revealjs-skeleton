@@ -1,0 +1,7 @@
+# Images made from Python scripts #############################################
+
+*.py.png
+*.py.svg
+*.py.gif
+*.py.jpeg
+*.py.jpg

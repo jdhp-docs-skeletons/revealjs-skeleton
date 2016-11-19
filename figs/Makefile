@@ -13,10 +13,10 @@ all: $(FILES_TO_MAKE)
 
 # DESCRIBE HERE HOW TO MAKE EACH FILE #########################################
 
-%.png: %.py
+%.py.png: %.py
 	python3 $<
 
-%.svg: %.py
+%.py.svg: %.py
 	python3 $<
 
 # CLEAN #######################################################################
