@@ -1,40 +1,64 @@
 #!/bin/sh
 
-# DEFINE TEMPLATES ############################################################
+# The MIT License
+#
+# Copyright (c) 2016 Jérémie DECOCK <jd.jdhp@gmail.com>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
-TODO_AUTHOR_NAME="Jérémie DECOCK"
-TODO_AUTHOR_EMAIL="jd.jdhp@gmail.com"
-TODO_AUTHOR_WEB_SITE="www.jdhp.org"
 
-TODO_COPYRIGHT_NOTICE="Copyright (c) 2016 ${TODO_AUTHOR_NAME} (${TODO_AUTHOR_WEB_SITE})"
+# SAFETY TESTS ################################################################
 
-TODO_DOCUMENT_DATE="1er septembre 2016"         # TODO
-TODO_INSTITUTE="CEA Saclay - Irfu/SAp"          # TODO
-TODO_DOCUMENT_SUBJECT="TODO"                    # TODO
-TODO_DOCUMENT_KEYWORDS="TODO,TODO"              # TODO
+# TODO: assert "$(dirname "$0") == "$(pwd)"
+#       ...
 
-TODO_DOCUMENT_TITLE="TODO"                      # TODO
-TODO_DOCUMENT_SUBTITLE="TODO"                   # TODO
-TODO_DOCUMENT_FILE_BASE_NAME="TODO_fr"          # TODO
 
-TODO_DOCUMENT_GITHUB_ACCOUNT="jdhp-docs"        # TODO
-TODO_DOCUMENT_GITHUB_REPOSITORY_NAME="TODO"     # TODO
+# LOAD VARIABLES ##############################################################
 
-TODO_DOCUMENT_GITHUB_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}"
-TODO_DOCUMENT_ISSUE_TRACKER_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}/issues"
+source ./meta.sh
 
-TODO_DOCUMENT_WEB_SITE_URL="http://www.jdhp.org/documentation_fr.html#${TODO_DOCUMENT_FILE_BASE_NAME}"
-TODO_DOCUMENT_HTML_URL="http://www.jdhp.org/docs/${TODO_DOCUMENT_FILE_BASE_NAME}/${TODO_DOCUMENT_FILE_BASE_NAME}.html"
-TODO_DOCUMENT_PDF_URL="http://www.jdhp.org/dl/pdf/${TODO_DOCUMENT_FILE_BASE_NAME}.pdf"
-
-TODO_HTML_TMP_DIR="html_tmp"
+echo "TODO_AUTHOR_NAME: ${TODO_AUTHOR_NAME}"
+echo "TODO_AUTHOR_EMAIL: ${TODO_AUTHOR_EMAIL}"
+echo "TODO_AUTHOR_WEB_SITE: ${TODO_AUTHOR_WEB_SITE}"
+echo "TODO_COPYRIGHT_NOTICE: ${TODO_COPYRIGHT_NOTICE}"
+echo "TODO_DOCUMENT_DATE: ${TODO_DOCUMENT_DATE}"
+echo "TODO_INSTITUTE: ${TODO_INSTITUTE}"
+echo "TODO_DOCUMENT_SUBJECT: ${TODO_DOCUMENT_SUBJECT}"
+echo "TODO_DOCUMENT_KEYWORDS: ${TODO_DOCUMENT_KEYWORDS}"
+echo "TODO_DOCUMENT_TITLE: ${TODO_DOCUMENT_TITLE}"
+echo "TODO_DOCUMENT_SUBTITLE: ${TODO_DOCUMENT_SUBTITLE}"
+echo "TODO_DOCUMENT_FILE_BASE_NAME: ${TODO_DOCUMENT_FILE_BASE_NAME}"
+echo "TODO_DOCUMENT_WEB_SITE_URL: ${TODO_DOCUMENT_WEB_SITE_URL}"
+echo "TODO_DOCUMENT_HTML_URL: ${TODO_DOCUMENT_HTML_URL}"
+echo "TODO_DOCUMENT_PDF_URL: ${TODO_DOCUMENT_PDF_URL}"
+echo "TODO_DOCUMENT_GITHUB_ACCOUNT: ${TODO_DOCUMENT_GITHUB_ACCOUNT}"
+echo "TODO_DOCUMENT_GITHUB_REPOSITORY_NAME: ${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}"
+echo "TODO_DOCUMENT_GITHUB_URL ${TODO_DOCUMENT_GITHUB_URL}"
+echo "TODO_DOCUMENT_ISSUE_TRACKER_URL: ${TODO_DOCUMENT_ISSUE_TRACKER_URL}"
+echo "TODO_HTML_TMP_DIR: ${TODO_HTML_TMP_DIR}"
 
 
 # SETUP GIT ###################################################################
 
 git remote rename origin skeleton
 git remote add origin git@github.com:${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}.git
-git push -u origin french-version              # TODO
+git push -u origin french-version
 
 git submodule init
 git submodule update
@@ -62,7 +86,12 @@ sed -i "" \
     -e "s TODO_DOCUMENT_GITHUB_URL ${TODO_DOCUMENT_GITHUB_URL} g" \
     -e "s TODO_DOCUMENT_ISSUE_TRACKER_URL ${TODO_DOCUMENT_ISSUE_TRACKER_URL} g" \
     -e "s/TODO_HTML_TMP_DIR/${TODO_HTML_TMP_DIR}/g" \
-    AUTHORS meta.make README.rst .gitignore main.html content/title_page.md
+    AUTHORS \
+    meta.make \
+    README.rst \
+    .gitignore \
+    main.html \
+    content/title_page.md
 
 
 # FIX TITLES UNDERLINE LENGTH IN RESTRUCTUREDTEXT FILES #######################

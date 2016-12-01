@@ -2,6 +2,8 @@
 
 ## Skeleton
 
+- [ ] Internal links (especially to make a table of content at the begining fo
+      long documents)
 - [x] Improve Mathjax support: fix the conflict between Markdown parser (the
       "Marked" plugin) and Mathjax by desabling Markdown parser between
       '$$...$$' like for code blocks '```...```' to avoid the use of
@@ -32,7 +34,7 @@
         - http://meta.mathoverflow.net/questions/1908/katex-vs-mathjax
         - KaTeX commands: https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX
         - Mathjax commands: http://docs.mathjax.org/en/latest/tex.html#supported-latex-commands
-- [ ] Add a makefile in "figs/" to make/clean figures from scripts (Python,
+- [x] Add a makefile in "figs/" to make/clean figures from scripts (Python,
       ...)
 - [ ] Improve the init_skeleton.sh script (add safety checks: are the variable
       defined ? is the skeleton branch already exist ? ...)
@@ -60,11 +62,11 @@
           or press a given key... Then, by default all content is reachable
           by search engines (and also it gives an overview of the content
           of the document for users) and start presentation on demand only...
-- [ ] Use main.html or index.html ?
+- [x] Use main.html or index.html ?
 - [x] Thought about figs/logos: it is copied for each document in
       www.jdhp.org/docs/ (waste of space)
 - [x] Find a solution to avoid "reveal.js/" redundancy in "www.jdhp.org/docs/"
-- [ ] Make a clean bibliography (like bibtex) from .bib files ?
+- [ ] Make a clean bibliography (like bibtex) from .bib files (found a .bib parser/renderer in JS) ?
 - [ ] Is the HTML document compliant with mobile devices (see Google's
       advices) ?
 
