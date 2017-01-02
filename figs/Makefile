@@ -19,7 +19,15 @@ all: $(FILES_TO_MAKE)
 %.py.svg: %.py
 	python3 $<
 
+%.tex.png: %.tex
+	# Taken from https://github.com/jeremiedecock/latex2png
+	latex -interaction=nonstopmode $< 1> /dev/null 2>&1
+	dvipng -q -T tight -D 300 `echo $< | sed -r "s/\.tex/\.dvi/"` -o $@ 1> /dev/null 2>&1
+
 # CLEAN #######################################################################
 
 clean:
+	# Latex generated files
+	rm -vf *.aux  *.dvi  *.log
+	# Generated files
 	@if [ -n "$(FILES_TO_MAKE)" ] ; then rm -v $(FILES_TO_MAKE) ; fi
