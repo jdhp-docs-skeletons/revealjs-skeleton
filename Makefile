@@ -4,9 +4,9 @@ include meta.make
 
 SUBDIRS = figs
 
-SRCSLIDES = main.html\
-            content/*.md\
-            figs/*
+SRCFILES = Makefile \
+           main.html \
+           content/*.md
 
 .PHONY : all clean init open pdf jdhp publish $(SUBDIRS)
 
@@ -62,7 +62,7 @@ pdf: $(FILE_BASE_NAME).pdf $(SUBDIRS)
 # TODO: follow the full setup procedure (with NodeJS) described there
 #       https://github.com/hakimel/reveal.js/#full-setup
 
-$(FILE_BASE_NAME).pdf: $(SRCSLIDES)
+$(FILE_BASE_NAME).pdf: $(SRCFILES)
 	@echo "Not fully available yet"           # TODO
 # Linux ###############################
 # See: http://askubuntu.com/questions/8252/
@@ -91,7 +91,7 @@ endif
 
 publish: jdhp
 
-#jdhp:$(FILE_BASE_NAME).pdf
+#jdhp:$(FILE_BASE_NAME).pdf     # TODO
 jdhp: $(SUBDIRS)
 	
 	########
@@ -114,7 +114,6 @@ jdhp: $(SUBDIRS)
 	# Upload the HTML files
 	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
 	
-	
 	#######
 	# PDF #
 	#######
@@ -130,7 +129,7 @@ jdhp: $(SUBDIRS)
 
 clean:
 	@echo "Remove generated files"
-	@rm -rf $(HTML_TMP_DIR)/
+	@rm -rvf $(HTML_TMP_DIR)/
 	$(MAKE) clean --directory=figs
 
 init: clean
