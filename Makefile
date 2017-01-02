@@ -12,10 +12,12 @@ SRCFILES = Makefile \
 
 all: open
 
+
 # SUBDIRS #####################################################################
 
 $(SUBDIRS):
 	$(MAKE) --directory=$@
+
 
 # OPEN IN WEB BROWSER #########################################################
 
@@ -28,7 +30,7 @@ $(SUBDIRS):
 # If uname not available then UNAME_S is set to 'unknown' 
 UNAME_S := $(shell sh -c 'uname -s 2>/dev/null || echo unknown')
 
-open: $(SUBDIRS)
+open: html
 # Linux ###############################
 # See: http://askubuntu.com/questions/8252/
 ifeq ($(UNAME_S),Linux)
@@ -55,14 +57,21 @@ ifneq (,$(findstring MSYS,$(UNAME_S)))
 	@start firefox  main.html
 endif
 
-# MAKE PDF ####################################################################
 
-pdf: $(FILE_BASE_NAME).pdf $(SUBDIRS)
+## MAKE ARTICLE ###############################################################
+
+# HTML ############
+
+html: $(SRCFILES) $(SUBDIRS)
+
+# PDF #############
+
+pdf: $(FILE_BASE_NAME).pdf
 
 # TODO: follow the full setup procedure (with NodeJS) described there
 #       https://github.com/hakimel/reveal.js/#full-setup
 
-$(FILE_BASE_NAME).pdf: $(SRCFILES)
+$(FILE_BASE_NAME).pdf: $(SRCFILES) $(SUBDIRS)
 	@echo "Not fully available yet"           # TODO
 # Linux ###############################
 # See: http://askubuntu.com/questions/8252/
@@ -92,7 +101,7 @@ endif
 publish: jdhp
 
 #jdhp:$(FILE_BASE_NAME).pdf     # TODO
-jdhp: $(SUBDIRS)
+jdhp: html
 	
 	########
 	# HTML #
@@ -124,6 +133,7 @@ jdhp: $(SUBDIRS)
 	#
 	## Upload the PDF file
 	#rsync -v -e ssh $(FILE_BASE_NAME).pdf ${JDHP_DL_URI}/pdf/
+
 
 ## CLEAN ######################################################################
 
