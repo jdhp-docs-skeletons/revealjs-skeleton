@@ -100,6 +100,10 @@ endif
 
 publish: jdhp
 
+publish-html: jdhp-html
+
+publish-pdf: jdhp-pdf
+
 jdhp: jdhp-html
 #jdhp: jdhp-html jdhp-pdf     # TODO
 
@@ -120,7 +124,7 @@ jdhp-html: html
 	# Upload the HTML files
 	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
 	
-jdhp-pdf: pdf
+jdhp-pdf: $(FILE_BASE_NAME).pdf
 	## JDHP_DL_URI is a shell environment variable that contains the destination
 	## URI of the PDF files.
 	#@if test -z $$JDHP_DL_URI ; then exit 1 ; fi
